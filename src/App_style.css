@@ -124,15 +124,20 @@
     border-right: 1px dashed burlywood;
     margin-right: 5px;
     font-weight: bold;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
 }
 .add-todo-input-data{
   
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 18px;
     border: 2px rgb(207, 207, 207) solid;
     border-radius: 5px;
-    height: 20px;
+    height: 30px;
+    color: #292827;
+    font-family: 'Times New Roman', Times, serif;
     width: 250px;
+
 }
 .input-text{
     width: 100%;
@@ -219,6 +224,6 @@
     border-radius: 5px;
     color: rgb(181,84,41);
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 23px;
     background-color: rgb(248,215,218);
 }
