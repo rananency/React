@@ -17,7 +17,7 @@ function App() {
         <div className="App">
           <Header/>
           <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/Home" component={Home}/>
             <Route exact path="/Add_Task" component={Add_Task}/>
             <Route exact path="/Delete_Specific_Task" component={Delete_specific_task}/>
             <Route exact path="/Display_all_task" component={Display_all_task}/>

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React,{useState} from 'react'
 import '../Validation.js'
 function Add_Task() {
-    var msg='jhmn,'
+    var msg=''
     var tempDate = new Date();
     var date = tempDate.getDate()+'-'+ (tempDate.getMonth()+1) + '-' + tempDate.getFullYear() 
     const [title, settitle] = useState()
@@ -13,23 +13,25 @@ function Add_Task() {
         status:'',
         st1:'',
         st2:'',
-        st3:''
+        st3:'',
+        errmsg:''
 
     }])
     
     const handle_change=(fname)=> {
-    
+        
         if(fname==='')
         {
-            msg='not null'
-            console.log(msg)
+           setTaskData({...Task_data,errmsg : 'Title is required!!'})
+            
             
         }
         else{
-            console.log(fname)
+            setTaskData({...Task_data,errmsg : ''})
         }
         
     }
+    
     // useEffect(() => {
         
     //     if (btnadd_task>0) {
@@ -37,21 +39,21 @@ function Add_Task() {
     // }, [btnadd_task])
     const submit_data=(event)=>{
         
-        let Subtask=[{
-                subtask1:Task_data.st1,
-                subtask2:Task_data.st2,
-                subtask3:Task_data.st3,
-            }]
+        let Subtask={
+                task1:Task_data.st1,
+                task2:Task_data.st2,
+                task3:Task_data.st3,
+            }
             console.log(Subtask)
             let Task_list={
                 title:Task_data.title,
-                tasks:Subtask,
+                subtask:Subtask,
                 dueDate:Task_data.dueDate
             }
             console.log(Task_list)
             // Task_list=JSON.stringify(Task_list)
             
-            axios.post('http://10.100.6.118:4000/Tasks',Task_list)
+            axios.post('http://localhost:5000/Tasks',Task_list)
             .then((res)=>{
                 console.log(res)
             })
@@ -70,24 +72,23 @@ function Add_Task() {
                  
                     <div className="add-todo-input">
                         <div className="add-todo-input-title ">Title</div>
-                        <div>
+                        <div >
                             <input 
                                 required
-                                className="add-todo-input-data"
                                 type='text' 
                                 value={Task_data.title} 
-                                onChange={(e)=>setTaskData({...Task_data,title:e.target.value})}
+                                onChange={(e)=>{setTaskData({...Task_data,title:e.target.value})}}
                                 onBlur={(e)=>handle_change(e.target.value)}
+                                className="add-todo-input-data"
                             />
-                        </div>
-                        <div className="err-msg">
-                            <h3>
+                            <br/>
+                            <span className={Task_data.errmsg ? 'err-msg' : ''} >
                             {
-                                msg && <h3>{msg}</h3>
-                                
+                                Task_data.errmsg && <span>{Task_data.errmsg}</span>
                             }
-                            </h3>
+                        </span>
                         </div>
+                        
                         
                     </div>
                     <div className="add-todo-input">

@@ -5,18 +5,13 @@ function Header() {
     return (
         <div className="nav">
             <div className="nav-item" >
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/Home">
                     Home
                 </Link>
             </div>
             <div className="nav-item" >
                 <Link className="nav-link" to="/Add_Task">
                     Add List
-                </Link>
-            </div>
-            <div className="nav-item" >
-                <Link className="nav-link" to="/Remove_all_task">  
-                    Remove List
                 </Link>
             </div>
             <div className="nav-item" >
